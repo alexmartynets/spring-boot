@@ -1,0 +1,52 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<h2>User list</h2>
+
+    <h4><a th:href="${#request.getContextPath()} + '/users/create'">Go to user create page ... </a></h4>
+    <h3 th:utext="${message}"></h3>
+
+    <form th:action="${#request.getContextPath()} + '/logout'" method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
+
+    <form th:action="${#request.getContextPath()} + '/users/delete'" method="POST">
+        <input type="submit" value="Delete"><br><br>
+
+        <table  class="table table-bordered">
+
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Delete</th>
+                <th scope="col">User id</th>
+                <th scope="col">User name</th>
+                <th scope="col">User email</th>
+                <th scope="col">User password</th>
+                <th scope="col">User roles</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-striped table-hover">
+
+        <th:block th:each="user: ${users}">
+            <tr>
+                <th scope="row"><input type="checkbox" th:name="deleteList" th:value="${user.id}"></th>
+                <th scope="row">
+                    <a th:href="${#request.getContextPath()} + 'update/' + ${user.id}" th:utext="${user.id}">
+                    </a>
+                </th>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.roles}"></td>
+            </tr>
+        </th:block>
+
+        </tbody>
+        </table>
+    </form>
+</body>
+</html>

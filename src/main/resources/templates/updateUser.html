@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>User update page</title>
+</head>
+<body>
+      <h2> User update page:</h2><br>
+      <h4><a th:href="${#request.getContextPath()} + '/users/list'">Go to user list page ... </a></h4>
+<!--      <h3 th:utext="${message}"></h3>-->
+
+      <form th:action="${#request.getContextPath()} + '/logout'" method="POST">
+            <input type="submit" value="Logout"/>
+      </form>
+
+      <form th:action="${#request.getContextPath()} + '/users/update/' + ${user.id}" method="POST">
+
+            <div class="form-group">
+                <label for="userName">User name</label>
+                <input th:value="${user.username}" type="text" width=100px name="username" class="form-control" id="userName" aria-describedby="userNameHelp">
+                <small id="userNameHelp" class="form-text text-muted">Enter user name</small>
+            </div>
+            <div class="form-group">
+                <label for="userEmail">User email</label>
+                <input th:value="${user.email}" type="text"  width=100px name="email" class="form-control" id="userEmail" aria-describedby="userEmailHelp">
+                <small id="userEmailHelp" class="form-text text-muted">Enter user email</small>
+            </div>
+            <div class="form-group">
+                <label for="userPassword">User password</label>
+                <input th:value="${user.password}" type="text"  width=100px name="password" class="form-control" id="userPassword" aria-describedby="userPasswordHelp">
+                <small id="userPasswordHelp" class="form-text text-muted">Enter user password</small>
+            </div>
+
+          <div class="form-group">
+              <label for="userRoles">User roles</label>
+              <select class="form-control" id="userRoles" name="roles" aria-describedby="userRolesHelp" enctype="multipart/form-data" multiple>
+                  <option th:value="USER" selected>USER</option>
+                  <option th:value="ADMIN">ADMIN</option>
+                  <option th:value="MODERATOR">MODERATOR</option>
+              </select>
+              <small id="userRolesHelp" class="form-text text-muted">Enter user roles</small>
+          </div>
+
+            <button type="submit" class="btn btn-primary">Update user</button>
+        </form>
+</body>
+</html>

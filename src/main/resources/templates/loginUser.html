@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>User Login page</title>
+</head>
+<body>
+    <h2> User login page:</h2><br>
+    <h3 th:utext="${message}"></h3>
+
+    <form th:action="${#request.getContextPath()} + '/security/login'" method="POST" >
+
+        <div class="form-group">
+            <label for="userName">User name</label>
+            <input type="text" width=100px name="username" class="form-control" id="userName" aria-describedby="userNameHelp">
+            <small id="userNameHelp" class="form-text text-muted">Enter user name</small>
+        </div>
+        <div class="form-group">
+            <label for="userPassword">User password</label>
+            <input type="text"  width=100px name="password" class="form-control" id="userPassword" aria-describedby="userPasswordHelp">
+            <small id="userPasswordHelp" class="form-text text-muted">Enter user password</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login user</button>
+    </form>
+
+</body>
+</html>

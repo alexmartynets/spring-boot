@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>User page</title>
+</head>
+
+<h2>User page</h2>
+
+    <h4><a th:href="${#request.getContextPath()} + '/users/list'">Go to user list page ... </a></h4>
+    <h4><a th:href="${#request.getContextPath()} + '/users/update/${user.getId()}'">Go to user update page ... </a></h4>
+
+    <form th:action="${#request.getContextPath()} + '/logout'" method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
+
+    <h3 th:utext="${message}"></h3>
+
+        <table  class="table table-bordered">
+
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">User roles</th>
+
+            </tr>
+            </thead>
+
+            <tbody class="table-striped table-hover">
+
+                <tr>
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.roles}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>
